@@ -1,3 +1,23 @@
+import { useState } from "react";
+
+export const useCustomCounter = () => {
+    const [counter, setCounter] = useState<number>(0);
+
+    const incrementCounter = () => {
+        setCounter(counter + 1);
+    };
+
+    const decrementCounter = () => {
+        setCounter(counter - 1);
+    };
+
+    return {
+        counter,
+        incrementCounter,
+        decrementCounter,
+    };
+};
+
 import { act, renderHook } from "@testing-library/react";
 import { hooksWrapper } from "<route to wrapper>";
 import { useCustomCounter } from "<route to hook>";
