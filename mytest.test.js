@@ -1,3 +1,42 @@
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
+
+test('increments the count', () => {
+  const { getByText } = render(<Counter />);
+
+  // Assert initial state
+  expect(getByText('Count: 0')).toBeInTheDocument();
+
+  // Interact with component
+  const incrementButton = getByText('Increment');
+  fireEvent.click(incrementButton);
+
+  // Assert updated state
+  expect(getByText('Count: 1')).toBeInTheDocument();
+});
+
+
+
+///////////////////////////////////////////////////////////
 export const hooksWrapper = ({ children }) => {
     return (
         <TestProviders>
