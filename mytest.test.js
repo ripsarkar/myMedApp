@@ -1,3 +1,13 @@
+export const hooksWrapper = ({ children }) => {
+    return (
+        <TestProviders>
+            <randomWrapper.Provider value={mockedValue}>
+                {children}
+            </randomWrapper.Provider>
+        </TestProviders>
+    );
+};
+
 import { useState } from "react";
 
 export const useCustomCounter = () => {
